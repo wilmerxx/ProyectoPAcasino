@@ -1,0 +1,49 @@
+<form class="row g-3 col-md-12" [formGroup]="form" (ngSubmit)="save($event)" style="padding: 5px;">
+
+
+  <div class="form-label" class="col-md-6" style="color:black;">
+      <p>Usuario</p>
+      <input  type="text" class="form-control" name="userCtrl" id="userCtrl" formControlName = "userCtrl">
+  </div>
+
+  <div class="form-label" class="col-md-6" style="color:black;">
+    <p>Contraseña</p>
+    <input  type="text" class="form-control" name="userCtrl" id="userCtrl" formControlName = "userCtrl">
+</div>
+
+  <div *ngIf="userCtrl?.errors && (userCtrl?.dirty || userCtrl?.touched)"
+      class="alert" style="color:black;">
+    <div *ngIf="userCtrl?.hasError('required')" style="color:black;">
+      <p>Usuario Requerido en la validación de Datos</p>
+    </div>
+  </div>
+
+  <div *ngIf="pasCtrl?.errors && (pasCtrl?.dirty || pasCtrl?.touched)"
+      class="alert" style="color:black;">
+    <div *ngIf="pasCtrl?.hasError('required')" style="color:black;">
+      <p>Ingrese la contraseña de forma correcta</p>
+    </div>
+  </div>
+
+  <!--Subir archivo-->
+
+  <div class="form-label" class="col-md-6" style="color:black;margin: 10px; align-items: center; text-align: center;">
+      <input type="checkbox" value="Terminos" formControlName = "terminosCtrl"> Tengo al menos 18 años y he leído,
+      acepto y estoy de acuerto con las codiciones generales, las reglas y las politicas de privcidad.
+  </div>
+
+  <div *ngIf="terminosCtrl?.errors && (terminosCtrl?.dirty || terminosCtrl?.touched)"
+      class="alert" style="color:black;">
+
+    <div *ngIf="terminosCtrl?.hasError('required')" style="color:black;">
+     No Acepto los terminos y condiciones
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary" style="margin-top: 10px; margin: 9px; width: 30%; height: 50px;" href="#" >Eviar Comprobante</button>
+
+
+
+</form>
+
