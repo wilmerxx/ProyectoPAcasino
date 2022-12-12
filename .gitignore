@@ -43,5 +43,17 @@ Thumbs.db
 
 
 #imagenes
-.png
-.jpg
+# JPEG
+*.jpg
+*.jpeg
+*.jpe
+*.jif
+*.jfif
+*.jfi
+
+# Portable Network Graphics
+*.png
+
+# Graphics Interchange Format
+*.gif
+
