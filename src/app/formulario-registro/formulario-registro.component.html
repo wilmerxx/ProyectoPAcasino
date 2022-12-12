@@ -1,0 +1,149 @@
+<form class="row g-3 col-md-12" [formGroup]="form" (ngSubmit)="save($event)" style="padding: 5px;">
+  <div class="form-label" style="color:black; height:100%;">
+    <p>Pais de residencia</p>
+    <select formControlName="paisesCtrl"  class="col-md-10" style="color:black; height:30px;align-items: center;">
+        <option value="Ecuador">Ecuador</option>
+        <option value="Argentina">Argentina</option>
+        <option value="Bolivia">Bolivia</option>
+        <option value="Brasil">Brasil</option>
+        <option value="Chile">Chile</option>
+        <option value="Colombia">Colombia</option>
+        <option value="Guyana">Guyana</option>
+        <option value="Peru">Peru</option>
+        <option value="Surinam">Surinam</option>
+        <option value="Uruguay">Uruguay</option>
+        <option value="Venezuela">Venezuela</option>
+
+    </select>
+    <div *ngIf="paisesCtrl?.errors && (paisesCtrl?.dirty || paisesCtrl?.touched)"
+    class="alert" style="color:black;">
+
+  <div *ngIf="paisesCtrl?.hasError('required')" style="color:black;">
+    No selecciono ningun país
+  </div>
+
+</div>
+  </div>
+
+  <div class="form-label" class="col-md-6" style="color:black;">
+      <p>Nombres:</p>
+      <input  type="text" class="form-control" name="nameCtrl" id="nameCtrl" formControlName = "nameCtrl">
+  </div>
+
+  <div class="form-label" class="col-md-6" style="color:black;">
+    <p>Apellidos:</p>
+    <input  type="text" class="form-control" name="nameCtrl" id="nameCtrl" formControlName = "nameCtrl">
+</div>
+
+  <div *ngIf="nameCtrl?.errors && (nameCtrl?.dirty || nameCtrl?.touched)"
+      class="alert" style="color:black;">
+    <div *ngIf="nameCtrl?.hasError('required')" style="color:black;">
+      <p>Estos campos son requeridos</p>
+    </div>
+  </div>
+
+  <div class="form-label" class="col-md-12" style="color:black; align-items: center;">
+    <p>Fecha de Nacimiento</p>
+      <input type="date" formControlName = "dateCtrl"  class="col-md-12"  style="color:black; height: 35px; width: 50%;max-width: 500px; align-items: center; text-align:center; border-radius: 5px;">
+  </div>
+
+  <div *ngIf="dateCtrl?.errors && (dateCtrl?.dirty || dateCtrl?.touched)"
+      class="alert" style="color:black;">
+    <div  style="color:black;" *ngIf="dateCtrl?.hasError('required')">
+      Debe selecionar la fecha de nacimiento
+    </div>
+  </div>
+
+  <h4 style="color:black;">Información de Contacto</h4>
+
+  <div class="form-label" class="col-md-6" style="color:black;">
+    <p>Correo Electrónico</p>
+    <input  type="text" class="form-control" name="emailCtrl" id="emailCtrl" formControlName = "emailCtrl">
+
+    <div style="color:black;" *ngIf="emailCtrl?.errors && (emailCtrl?.dirty || emailCtrl?.touched)"
+    class="alert">
+
+  <div *ngIf="emailCtrl?.hasError('required')" class="col-md-6" style="color:black;  height: 50px; width: 400px; align-items: center; text-align:center; font-size: medium;">
+    Debe ingresar un correo electronico
+  </div>
+</div>
+</div>
+
+<div class="form-label" class="col-md-6" style="color:black;">
+  <p>N. de Contacto</p>
+  <input  type="text" class="form-control" name="telefCtrl" id="telefCtrl" formControlName = "telefCtrl">
+  <div class="form-label"  class="col-md-6" style="color:black;">
+</div>
+
+
+<div style="color:black;" *ngIf="telefCtrl?.errors && (telefCtrl?.dirty || telefCtrl?.touched)"
+    class="alert">
+  <div *ngIf="telefCtrl?.hasError('required')" style="color:black;">
+    Debe ingresar el numero de celular
+  </div>
+</div>
+
+</div>
+
+  <div class="form-label" class="col-md-6" style="color:black;">
+    <h2 style="padding: 2px;">Dirección</h2>
+    <input  class="col-md-6" type="text" class="form-control" name="calleCtrl" id="calleCtrl" formControlName = "calleCtrl" placeholder="Direccion - Calle Principal">
+    <input  class="col-md-6" type="text" class="form-control" name="" id="" formControlName = "" placeholder="Direccion - Calle Secundaria (Opcional)"><br>
+
+    <input  class="col-md-6" type="text" class="form-control" name="localidadCtrl" id="localidadCtrl" formControlName = "localidadCtrl" placeholder="Localidad">
+
+    <input  class="col-md-6" type="text" class="form-control" name="ciudadCtrl" id="ciudadCtrl" formControlName = "ciudadCtrl" placeholder="Ciudad">
+
+  </div>
+
+  <div *ngIf="calleCtrl?.errors && (calleCtrl?.dirty || calleCtrl?.touched) && localidadCtrl?.errors && (localidadCtrl?.dirty || localidadCtrl?.touched)
+  && ciudadCtrl?.errors && (ciudadCtrl?.dirty || ciudadCtrl?.touched)"
+
+      class="alert" style="color:black;">
+
+    <div *ngIf="calleCtrl?.hasError('required')" style="color:black;">
+     Debe ingresar la direccion - calle Principal
+    </div>
+    <div *ngIf="localidadCtrl?.hasError('required')" style="color:black;">
+      Debe ingresar la direccion de su localidad
+     </div>
+     <div *ngIf="ciudadCtrl?.hasError('required')" style="color:black;">
+      Debe ingresar la direccion de su ciudad
+     </div>
+  </div>
+
+  <div class="form-label" class="col-md-6" style="color:black;margin: 10px; align-items: center; text-align: center;">
+      <input type="checkbox" value="Terminos" formControlName = "terminosCtrl"> Tengo al menos 18 años y he leído,
+      acepto y estoy de acuerto con las codiciones generales, las reglas y las politicas de privcidad.
+  </div>
+
+  <div *ngIf="terminosCtrl?.errors && (terminosCtrl?.dirty || terminosCtrl?.touched)"
+      class="alert" style="color:black;">
+
+    <div *ngIf="terminosCtrl?.hasError('required')" style="color:black;">
+     No Acepto los terminos y condiciones
+    </div>
+
+  </div>
+
+          <!--Formulario Modal Comprobante Registro-->
+          <div class="modal fade " id="contenedor-modal" tabindex="2" >
+            <div class="modal-dialog modal-dialog-centered " style="width: 70%; max-width: 50%;;text-align:center;">
+              <!--<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="width: 70%; max-width: 50%;;text-align:center;">-->
+              <div class="modal-content" >
+                <div class="modal-head" >
+                  <h2 style="color:black;padding: 5px; text-align:center;">Abrir un Cuenta</h2>
+                  <app-comprobante-registro></app-comprobante-registro>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contenedor-modal" style="margin-top: 10px; margin: 9px; width: 30%; height: 50px;">Comprobante</button>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 10px; margin: 9px; width: 30%; height: 50px;">Registrar</button>
+
+
+
+</form>
+
