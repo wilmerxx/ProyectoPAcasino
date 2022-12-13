@@ -15,5 +15,21 @@
   ul li:hover{
     background-color: #0f1b2a;
   }
+  .modal-dialog{
+    max-width:70%;
+    width: 70%;
+    text-align:center;
+  }
+
+  @media screen and (max-width: 768px) {
+    .modal-dialog{
+      max-width:100%;
+      width: 100%;
+      text-align:center;
+    }
+    .img{
+      display: none;
+    }
+  }
 
 }
