@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from '../services/service.service';
 
 @Component({
   selector: 'app-contenido',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contenido.component.scss']
 })
 export class ContenidoComponent implements OnInit {
-
-  constructor() { }
+  service:any;
+  constructor(public deportes:ServiceService) { }
 
   ngOnInit(): void {
+    this.deportes.getdeportes().subscribe(
+      (r) => {this.deportes = r; console.log(r)},
+      (e) => {console.log(e)}
+    )
   }
+
 
 }

@@ -12,4 +12,6 @@ export class PrinIzquierdoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
 }
