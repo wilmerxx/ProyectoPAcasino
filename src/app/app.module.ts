@@ -14,6 +14,9 @@ import { FooterComponent } from './footer/footer.component';
 import { FormularioRegistroComponent } from './formulario-registro/formulario-registro.component';
 import { ComprobanteRegistroComponent } from './comprobante-registro/comprobante-registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ServiceService } from './services/service.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -27,14 +30,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     FormularioRegistroComponent,
     ComprobanteRegistroComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule
+
   ],
-  providers: [],
+  providers: [ServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
