@@ -57,3 +57,8 @@ Thumbs.db
 # Graphics Interchange Format
 *.gif
 
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
