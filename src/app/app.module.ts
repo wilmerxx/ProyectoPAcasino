@@ -16,6 +16,7 @@ import { ComprobanteRegistroComponent } from './comprobante-registro/comprobante
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceService } from './services/service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     CarouselComponent,
     FooterComponent,
     FormularioRegistroComponent,
-    ComprobanteRegistroComponent
+    ComprobanteRegistroComponent,
+    LoginComponent
 
   ],
   imports: [

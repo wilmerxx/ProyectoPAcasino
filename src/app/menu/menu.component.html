@@ -34,14 +34,19 @@
 
 
           <!--Formulario Modal-->
-        <div class="modal fade " id="contenedor-modal" tabindex="2" >
+        <div class="modal" id="contenedor-modal" tabindex="-1" >
           <div class="modal-dialog modal-dialog-centered ">
             <!--<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="width: 70%; max-width: 50%;;text-align:center;">-->
             <div class="modal-content" >
+              <div class="modal-header">
+                <button class="btn" data-bs-dismiss="modal">&times;</button>
+              </div>
               <div class="modal-head m-4 " >
                 <h2 style="color:black;padding: 5px; text-align:center;">Abrir un Cuenta</h2>
+
                 <div class="row">
                   <img class="col-lg-5 img" src="../../assets/5354269.jpg" width="100%"  alt="">
+
                  <app-formulario-registro class="col-lg-7"></app-formulario-registro>
                 </div>
               </div>
@@ -50,8 +55,26 @@
         </div>
 
         </li>
+
         <li class="nav-item">
-          <a class="nav-link " href="#" >INICIAR SESIÓN</a>
+          <a class="nav-link " data-bs-toggle="modal" data-bs-target="#contenedor-modal-login" href="#">INICIAR SESIÓN</a>
+          <!--Formulario Modal-->
+        <div class="modal" id="contenedor-modal-login" tabindex="-1" >
+          <div class="modal-dialog modal-dialog-centered ">
+            <!--<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="width: 70%; max-width: 50%;;text-align:center;">-->
+            <div class="modal-content" >
+              <div class="modal-header">
+                <button class="btn" data-bs-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-head m-4 " >
+                <h2 style="color:black;padding: 1px; text-align:center;">Iniciar Sesion</h2>
+                 <app-login class="col-lg-7"></app-login>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         </li>
       </ul>
       <form class="d-flex" role="search">

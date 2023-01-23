@@ -1,0 +1,48 @@
+
+<div class="wrapper">
+  <div class="logo">
+      <img src="https://cdn.discordapp.com/attachments/1063843961610961008/1067018185561346068/pngwing.com.png" alt="">
+  </div>
+  <div class="text-center mt-4 name">
+      JEDW6
+  </div>
+  <form class="p-3 mt-3" (ngSubmit)="verificar($event)">
+      <div class="form-field d-flex align-items-center">
+          <span class="far fa-user"></span>
+          <input type="text" name="user" id="user" placeholder="email">
+      </div>
+      <div class="form-field d-flex align-items-center">
+          <span class="fas fa-key"></span>
+          <input type="password" name="password" id="pwd" placeholder="Password">
+      </div>
+      <button type="submit" class="btn mt-3">Login</button>
+  </form>
+  <div class="text-center fs-6 nav-item">
+      <a href="#">¿Te olvidaste la contraseña?</a> o <a class="nav-link " data-bs-toggle="modal" data-bs-target="#contenedor-modal" href="#">Inscribirse</a>
+  </div>
+</div>
+
+
+
+  <!--Formulario Modal-->
+<div class="modal" id="contenedor-modal" tabindex="-1" >
+  <div class="modal-dialog modal-dialog-centered ">
+    <!--<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="width: 70%; max-width: 50%;;text-align:center;">-->
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button class="btn" data-bs-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-head m-4 " >
+        <h2 style="color:black;padding: 5px; text-align:center;">Abrir un Cuenta</h2>
+
+        <div class="row">
+          <img class="col-lg-5 img" src="../../assets/5354269.jpg" width="100%"  alt="">
+
+         <app-formulario-registro class="col-lg-7"></app-formulario-registro>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
