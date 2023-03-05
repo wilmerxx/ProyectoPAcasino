@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import {Usuario} from '../Usuario';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,12 +13,20 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   usuario: Usuario[]=[];
   form!: FormGroup;
+  email: any;
+  pass: any ;
+  user: any ;
+
   constructor(private service: ServiceService, private formBuilder: FormBuilder, private router: Router) {
     this.buildForm();
 
    }
-
   ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  closeModal(): void {
+    this.service.$modal.emit(false);
   }
 
   private buildForm(){
@@ -29,13 +38,13 @@ export class LoginComponent implements OnInit {
 
   verificar(event:Event){
     event.preventDefault();
-    const email = this.form.value.emailCtrl;
-    const pass = this.form.value.passCtrl;
-    const user = this.service.getFormulario().subscribe(form => {
+    this.email = this.form.value.emailCtrl;
+    this.pass = this.form.value.passCtrl;
+    this.user = this.service.getFormulario().subscribe(form => {
       this.usuario = form;
     });
 
-    this.router.navigate(['/contenido']);
+    this.router.navigate(['/panel-cliente']);
 
   }
 

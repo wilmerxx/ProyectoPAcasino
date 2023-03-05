@@ -9,12 +9,8 @@ import { ServiceService } from '../services/service.service';
 export class ContenidoComponent implements OnInit {
   service:any;
   constructor(public deportes:ServiceService) { }
-
   ngOnInit(): void {
-    this.deportes.getdeportes().subscribe(
-      (r) => {this.deportes = r; console.log(r)},
-      (e) => {console.log(e)}
-    )
+    throw new Error('Method not implemented.');
   }
 
 

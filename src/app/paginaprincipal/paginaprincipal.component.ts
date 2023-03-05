@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from '../services/service.service';
 
 @Component({
   selector: 'app-paginaprincipal',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginaprincipalComponent implements OnInit {
 
-  constructor() { }
 
+  constructor(private service:ServiceService) { }
   ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
+
 
 }

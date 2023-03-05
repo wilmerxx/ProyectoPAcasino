@@ -19,6 +19,9 @@ export class FormularioRegistroComponent implements OnInit {
     this.buildForm();
     this.files = [];
   }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   closeModal(){
     this.modalSS.$modal.emit(false);
@@ -31,11 +34,6 @@ export class FormularioRegistroComponent implements OnInit {
     }else{
       this.viewModal = true;
     }
-  }
-
-
-
-  ngOnInit(): void {
   }
 
   private buildForm(){

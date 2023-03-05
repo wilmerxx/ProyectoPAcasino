@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceService } from './services/service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { DashboardClientComponent } from './dashboard-client/dashboard-client.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     FormularioRegistroComponent,
     ComprobanteRegistroComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardClientComponent
 
   ],
   imports: [
@@ -40,7 +42,6 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
-
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

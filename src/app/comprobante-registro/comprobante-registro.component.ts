@@ -17,6 +17,9 @@ export class ComprobanteRegistroComponent implements OnInit {
   constructor(private modalSS: ServiceService, private formBuilder: FormBuilder) {
     this.buildForm();
   }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   closeModal(){
     this.modalSS.$modal.emit(false);
@@ -36,8 +39,6 @@ export class ComprobanteRegistroComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-  }
 
   private buildForm(){
     this.form = this.formBuilder.group({

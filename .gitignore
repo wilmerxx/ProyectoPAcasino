@@ -57,3 +57,7 @@ Thumbs.db
 # Graphics Interchange Format
 *.gif
 
+# archivos de sonarqube
+*.log
+*.properties
+*.scannerwork

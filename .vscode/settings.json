@@ -1,3 +1,4 @@
 {
-    "terminal.integrated.allowChords": false
+    "terminal.integrated.allowChords": false,
+    "git.ignoreLimitWarning": true
 }
