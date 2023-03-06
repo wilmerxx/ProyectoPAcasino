@@ -19,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { DashboardClientComponent } from './dashboard-client/dashboard-client.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +33,6 @@ import { DashboardClientComponent } from './dashboard-client/dashboard-client.co
     ComprobanteRegistroComponent,
     LoginComponent,
     DashboardClientComponent
-
   ],
   imports: [
     BrowserModule,

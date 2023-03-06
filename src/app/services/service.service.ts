@@ -37,4 +37,9 @@ export class ServiceService {
     return this.httpClient.put<Usuario>(`${this.domain}/api/formulario/${newForm.id}`, newForm).pipe(map(res=>res));
   }
 
+  login(user: any): Observable<any> {
+    return this.httpClient.put<Usuario>(`${this.domain}/api/login/`, user);
+  }
+
+
 }

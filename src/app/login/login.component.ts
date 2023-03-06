@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../services/service.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {Usuario} from '../Usuario';
 import { Router } from '@angular/router';
 
@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, Validators {
   usuario: Usuario[]=[];
   form!: FormGroup;
   email: any;
   pass: any ;
   user: any ;
+  validateIfTrue: any;
 
   constructor(private service: ServiceService, private formBuilder: FormBuilder, private router: Router) {
     this.buildForm();
@@ -35,6 +36,13 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
     });
   }
+  login(){
+    const user = {email: this.email, password: this.pass};
+    this.service.login(user).subscribe( data => {
+      console.log(data);
+    });
+    this.router.navigate(['/panel-cliente']);
+  }
 
   verificar(event:Event){
     event.preventDefault();
@@ -44,8 +52,18 @@ export class LoginComponent implements OnInit {
       this.usuario = form;
     });
 
-    this.router.navigate(['/panel-cliente']);
-
+  }
+  onSubmit() {
+    if (this.email === 'email' && this.pass === 'pass') {
+      // Permitir el acceso al sistema
+    } else {
+      // Mostrar mensaje de error
+    }
   }
 
+
 }
+  function validate(email: any, AbstractControl: any) {
+    throw new Error('Function not implemented.');
+  }
+
