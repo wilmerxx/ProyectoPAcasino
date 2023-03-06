@@ -54,6 +54,7 @@ export class FormularioRegistroComponent implements OnInit {
     });
   }
 
+
   save(event: Event){
     event.preventDefault();
     if(this.form.valid){

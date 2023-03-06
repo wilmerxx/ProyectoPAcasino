@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http'
 import { Observable, map } from 'rxjs';
 import {Usuario} from '../Usuario';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,5 +37,10 @@ export class ServiceService {
   updateFormulario(newForm: Usuario) {
     return this.httpClient.put<Usuario>(`${this.domain}/api/formulario/${newForm.id}`, newForm).pipe(map(res=>res));
   }
+
+  checkEmailUnique(email: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(`/api/check-email?email=${email}`);
+  }
+
 
 }

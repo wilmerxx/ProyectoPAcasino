@@ -1,10 +1,10 @@
 <div class="conte-form">
   <form class="row g-3 col-md-12 p-4 from-control" [formGroup]="form" (ngSubmit)="addFormulario($event)">
-
     <div class="form-label col-lg-12" style="color:black; height:100%;">
       <span class="m-2">Pais de residencia</span>
       <select formControlName="paisesCtrl" class="col-md-10 col-lg-8"
         style="color:black; height:30px;align-items: center;">
+        <option value="" disabled selected>Selecciona un país</option>
         <option value="Ecuador">Ecuador</option>
         <option value="Argentina">Argentina</option>
         <option value="Bolivia">Bolivia</option>
@@ -19,13 +19,10 @@
 
       </select>
       <div *ngIf="paisesCtrl?.errors && (paisesCtrl?.dirty ||
-        paisesCtrl?.touched)"
-        class="alert" style="color:black;">
-
+        paisesCtrl?.touched)" class="alert alert-danger" style="color:black;">
         <div *ngIf="paisesCtrl?.hasError('required')" style="color:rgb(172, 33, 33);">
-          No selecciono ningun país
+          El campo País es requerido.
         </div>
-
       </div>
     </div>
 
@@ -37,16 +34,18 @@
         </div>
         <div class="col-lg-9">
           <input type="text" class="form-control " name="nameCtrl" id="nameCtrl"
-          formControlName="nameCtrl">
+          formControlName="nameCtrl" pattern="^[a-zA-Z ]+$">
         </div>
       </div>
     </div>
-    <div *ngIf="nameCtrl?.errors && (nameCtrl?.dirty || nameCtrl?.touched)"
-    class="alert" style="color:black;">
-    <div *ngIf="nameCtrl?.hasError('required')" style="color:rgb(172, 33, 33);">
-      <p>Estos campos son requeridos</p>
-    </div>
+    <div>
+      <span *ngIf="nameCtrl?.invalid && (nameCtrl?.dirty || nameCtrl?.touched)"
+      class="text-danger">
+      <span *ngIf="nameCtrl?.hasError('required')">El campo es obligatorio.</span>
+      <span *ngIf="nameCtrl?.hasError('pattern')">El campo debe contener solo letras.</span>
+    </span>
   </div>
+
 
 
   <div class="col-lg-12">
@@ -56,18 +55,17 @@
       </div>
       <div class="col-lg-9">
         <input type="text" class="form-control" name="apellidoCtrl" id="apellidoCtrl"
-        formControlName="apellidoCtrl">
+        formControlName="apellidoCtrl" pattern="^[a-zA-Z ]+$">
       </div>
     </div>
   </div>
-
-
-    <div *ngIf="apellidoCtrl?.errors && (apellidoCtrl?.dirty || apellidoCtrl?.touched)"
-      class="alert" style="color:black;">
-      <div *ngIf="apellidoCtrl?.hasError('required')" style="color:rgb(172, 33, 33);">
-        <p>Estos campos son requeridos</p>
-      </div>
-    </div>
+  <div>
+    <span *ngIf="apellidoCtrl?.invalid && (apellidoCtrl?.dirty || apellidoCtrl?.touched)"
+    class="text-danger">
+    <span *ngIf="apellidoCtrl?.hasError('required')">El campo es obligatorio.</span>
+    <span *ngIf="apellidoCtrl?.hasError('pattern')">El campo debe contener solo letras.</span>
+  </span>
+</div>
 
     <div  class="col-md-12 g-2" style="color:black; align-items:
       center;">
@@ -78,7 +76,7 @@
     </div>
 
     <div *ngIf="dateCtrl?.errors && (dateCtrl?.dirty || dateCtrl?.touched)"
-      class="alert" style="color:rgb(172, 33, 33);">
+      class="alert text-danger" style="color:rgb(172, 33, 33);">
       <div style="color:black;" *ngIf="dateCtrl?.hasError('required')">
         Debe selecionar la fecha de nacimiento
       </div>
@@ -92,17 +90,16 @@
         <label class="form-label">Cédula:</label>
       </div>
       <div class="col-lg-9">
-        <input type="number" class="form-control" name="cedulaCtrl" id="cedulaCtrl"
-        formControlName="cedulaCtrl">
+        <input type="text" class="form-control" name="cedulaCtrl" id="cedulaCtrl"
+        formControlName="cedulaCtrl" pattern="^[0-9]{10}$"  maxlength="10" >
       </div>
     </div>
    </div>
-
-    <div *ngIf="cedulaCtrl?.errors && (cedulaCtrl?.dirty || cedulaCtrl?.touched)"
-      class="alert" style="height: 2%;">
-      <div *ngIf="cedulaCtrl?.hasError('required')" style="color:rgb(172, 33, 33);">
-        <span>Estos campos son requeridos</span>
-      </div>
+    <div>
+    <span *ngIf="cedulaCtrl?.invalid && (cedulaCtrl?.dirty || cedulaCtrl?.touched)"
+    class="text-danger">
+    <span *ngIf="cedulaCtrl?.hasError('pattern')">El campo debe contener solo números y 10 digitos.</span>
+  </span>
     </div>
 
     <div class="col-md-12" style="color:black;">
@@ -111,8 +108,8 @@
           <label for="emailCtrl" class="form-label" >Correo Electrónico</label>
         </div>
         <div class="col-lg-9">
-          <input type="text" class="form-control" name="emailCtrl" id="emailCtrl"
-        formControlName="emailCtrl">
+          <input placeholder="example@gmail.com" type="text" class="form-control" name="emailCtrl" id="emailCtrl"
+        formControlName="emailCtrl" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
         </div>
       </div>
     </div>
@@ -124,7 +121,7 @@
         <div *ngIf="emailCtrl?.hasError('required')" class="col-md-6"
           style="color:rgb(172, 33, 33); height: 50px; width: 400px; align-items: center;
           text-align:center; font-size: medium;">
-          Debe ingresar un correo electronico
+          Ingrese un correo electrónico válido.
         </div>
       </div>
 
@@ -135,21 +132,19 @@
           <span class="form-label" >Telefono</span>
         </div>
         <div class="col-lg-9">
-          <input type="number" class="form-control" name="telefCtrl" id="telefCtrl" formControlName="telefCtrl">
+          <input type="text" class="form-control" name="telefCtrl" id="telefCtrl" formControlName="telefCtrl"  maxlength="10" pattern="^[0-9]{10}$">
         </div>
       </div>
-
     </div>
-
-
-    <div style="color:black;" *ngIf="telefCtrl?.errors && (telefCtrl?.dirty || telefCtrl?.touched)" class="alert">
-      <div *ngIf="telefCtrl?.hasError('required')" style="color:rgb(172, 33, 33);">
-        Debe ingresar el numero de celular
+      <div>
+        <span *ngIf="telefCtrl?.invalid && (telefCtrl?.dirty || telefCtrl?.touched)"
+        class="text-danger">
+           <span *ngIf="telefCtrl?.hasError('pattern')">El campo debe contener solo números y 10 digitos.</span>
+        </span>
       </div>
-    </div>
 
 
-    <h4 style="padding: 2px;">Dirección</h4>
+    <h4 style="padding: 2px; color:black">Dirección</h4>
 
     <div class="col-lg-12">
       <div class="row g-2">
@@ -158,18 +153,17 @@
         </div>
         <div class="col-lg-9">
           <input type="text" class="form-control" name="localidadCtrl" id="localidadCtrl"
-          formControlName="localidadCtrl">
+          formControlName="localidadCtrl" pattern="^[a-zA-Z ]+$">
         </div>
       </div>
     </div>
-
-
-      <div *ngIf="localidadCtrl?.errors && (localidadCtrl?.dirty || localidadCtrl?.touched)"
-        class="alert" style="color:black;">
-        <div *ngIf="localidadCtrl?.hasError('required')" style="color:rgb(172, 33, 33);">
-          <p>Estos campos son requeridos</p>
-        </div>
-      </div>
+      <div>
+        <span *ngIf="localidadCtrl?.invalid && (localidadCtrl?.dirty || localidadCtrl?.touched)"
+        class="text-danger">
+        <span *ngIf="localidadCtrl?.hasError('required')">El campo es obligatorio.</span>
+        <span *ngIf="localidadCtrl?.hasError('pattern')">El campo debe contener solo letras.</span>
+      </span>
+    </div>
 
       <div class="col-lg-12">
         <div class="row g-2">
@@ -178,58 +172,58 @@
           </div>
           <div class="col-lg-9">
             <input type="text" class="form-control" name="ciudadCtrl" id="ciudadCtrl"
-            formControlName="ciudadCtrl">
+            formControlName="ciudadCtrl" pattern="^[a-zA-Z ]+$">
           </div>
         </div>
       </div>
 
-
-        <div *ngIf="ciudadCtrl?.errors && (ciudadCtrl?.dirty || ciudadCtrl?.touched)"
-          class="alert" style="color:black;">
-          <div *ngIf="ciudadCtrl?.hasError('required')" style="color:rgb(172, 33, 33);">
-            <p>Estos campos son requeridos</p>
-          </div>
-        </div>
+      <div>
+        <span *ngIf="ciudadCtrl?.invalid && (ciudadCtrl?.dirty || ciudadCtrl?.touched)"
+        class="text-danger">
+        <span *ngIf="ciudadCtrl?.hasError('required')">El campo es obligatorio.</span>
+        <span *ngIf="ciudadCtrl?.hasError('pattern')">El campo debe contener solo letras.</span>
+      </span>
+    </div>
 
 
         <div class="col-lg-12">
           <div class="row g-2">
             <div class="col-lg-3" style="color:black;">
-              <label class="form-label">Calle principal:</label>
+              <label class="form-label">Calle Principal y Secundaria:</label>
             </div>
             <div class="col-lg-9">
               <input type="text" class="form-control" name="calleCtrl" id="calleCtrl"
-              formControlName="calleCtrl">
+              formControlName="calleCtrl" pattern="^[a-zA-Z ]+$">
             </div>
           </div>
         </div>
 
-
-          <div *ngIf="calleCtrl?.errors && (calleCtrl?.dirty || calleCtrl?.touched)"
-            class="alert" style="color:black;">
-            <div *ngIf="calleCtrl?.hasError('required')" style="color:rgb(172, 33, 33);">
-              <p>Estos campos son requeridos</p>
-            </div>
-          </div>
+        <div>
+          <span *ngIf="calleCtrl?.invalid && (calleCtrl?.dirty || calleCtrl?.touched)"
+          class="text-danger">
+          <span *ngIf="calleCtrl?.hasError('required')">El campo es obligatorio.</span>
+          <span *ngIf="calleCtrl?.hasError('pattern')">El campo debe contener solo letras.</span>
+        </span>
+      </div>
 
       <div class="col-lg-12">
         <div class="row g-2">
           <div class="col-lg-3" style="color:black;">
-            <label class="form-label">Imagen de su cédula:</label>
+            <label class="form-label">Seleccione archivo de Cedula de Identidad</label>
           </div>
           <div class="col-lg-9">
-            <input class="form-label" type="file" style="color: black;"  formControlName="fileCtrl" name="fileCtrl" id="fileCtrl" />
+            <input class="form-label" type="file" style="color: black;"  accept=".jpg,.jpeg,.png,.pdf"  formControlName="fileCtrl" name="fileCtrl" id="fileCtrl" />
+            <div *ngIf="fileCtrl?.invalid && (fileCtrl?.dirty || fileCtrl?.touched)">
+              <div *ngIf="fileCtrl?.hasError('required')">
+                La imagen de la cédula es requerida.
+              </div>
+              <div *ngIf="fileCtrl?.hasError('accept')">
+                Solo se aceptan imágenes en formato jpg, jpeg, png o pdf.
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-
-          <div *ngIf="(fileCtrl?.dirty || fileCtrl?.touched)"
-              class="alert" style="color:black;">
-          <div *ngIf="fileCtrl?.hasError('required')" style="color:black;">
-            No ha seleccionado su imagen
-          </div>
-          </div>
 
 
     <div class="form-label" class="col-md-12" style="color:black;margin: 10px;
