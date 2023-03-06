@@ -1,5 +1,5 @@
 <div class="conte-form">
-  <form class="row g-3 col-md-12 p-4 from-control" [formGroup]="form" (ngSubmit)="addFormulario($event)">
+  <form class="row g-3 col-md-12 p-4 from-control" [formGroup]="form" (ngSubmit)="addFormulario($event)" >
     <div class="form-label col-lg-12" style="color:black; height:100%;">
       <span class="m-2">Pais de residencia</span>
       <select formControlName="paisesCtrl" class="col-md-10 col-lg-8"
@@ -244,9 +244,14 @@
 
     </div>
 
-    <button type="submit" href="#" class="btn btn-primary" >Registrar</button>
-
+    <button type="submit" routerLink="/Principal" onclick="location.reload()" class="btn btn-primary" >Registrar</button>
   </form>
 
 </div>
+
+<script>
+  setTimeout(function() {
+    location.reload();
+  }, 5000);
+</script>
 
